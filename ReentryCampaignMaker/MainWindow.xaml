@@ -1,0 +1,83 @@
+﻿<Window x:Class="ReentryCampaignMaker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ReentryCampaignMaker"
+        mc:Ignorable="d"
+        Title="Reentry Campaign Maker" Width="768" Height="768" Background="#FF2B2B2B" >
+    <Grid>
+        <TextBox Name="CampaignTitle" Height="23" Margin="10,122,379,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,101,0,0" TextWrapping="Wrap" Text="Campaign Title" VerticalAlignment="Top" Width="132" Foreground="White"/>
+        <ListBox ScrollViewer.HorizontalScrollBarVisibility="Disabled" Name="SectionHolder" Margin="10,227,287,10" SelectionChanged="SectionHolder_SelectionChanged"/>
+        <Button Name="AddSection" Content="Add" HorizontalAlignment="Right" Margin="0,200,443,0" VerticalAlignment="Top" Width="75" Click="AddSection_Click" Height="22"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,174,0,0" TextWrapping="Wrap" Text="Campaign Sections" VerticalAlignment="Top" Width="132" Foreground="White"/>
+        <ComboBox Name="SectionTypeSelector" Margin="84,200,523,0" VerticalAlignment="Top" SelectedIndex="0">
+            <ComboBoxItem Content="Header"/>
+            <ComboBoxItem Content="Text"/>
+            <ComboBoxItem Content="Image"/>
+        </ComboBox>
+
+        <GroupBox Visibility="Collapsed" Name="InspectorHeader" Header="Inspector" Margin="0,219,10,10" Foreground="White" HorizontalAlignment="Right" Width="272">
+            <StackPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Header Item" VerticalAlignment="Top"/>
+                <TextBox Name="HeaderContent"  TextWrapping="Wrap"  Text="Content" TextChanged="HeaderContent_TextChanged" />
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Visibility="Collapsed" Name="InspectorText" Header="Inspector" Margin="0,219,10,10" Foreground="White" HorizontalAlignment="Right" Width="272">
+            <StackPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Text Item" VerticalAlignment="Top"/>
+                <TextBox Name="TextContent" Text="Content" Height="165" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" SpellCheck.IsEnabled="True" TextChanged="TextContent_TextChanged" />
+            </StackPanel>
+        </GroupBox>
+
+
+        <GroupBox Visibility="Collapsed" Name="InspectorImage" Header="Inspector" Margin="0,219,10,10" Foreground="White" HorizontalAlignment="Right" Width="272">
+            <StackPanel Orientation="Vertical">
+                <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Image Item" VerticalAlignment="Top"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="ImageContent" Text="imagefile.png" Width="187"/>
+                    <Button Name="SetImageFile" Content="Set" Width="41" Click="SetImageFile_Click"></Button>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Visibility="Visible" Name="InspectorEmpty" Header="Inspector" Margin="0,219,10,10" Foreground="White" HorizontalAlignment="Right" Width="272">
+
+        </GroupBox>
+        <TextBox Name="CampaignWorkingFolder" Height="23" Margin="10,69,58,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,48,0,0" TextWrapping="Wrap" Text="Campaign Folder" VerticalAlignment="Top" Width="132" Foreground="White"/>
+        <Button Name="SetWorkingFolderButton" Content="Set" Margin="0,69,10,0" VerticalAlignment="Top" Height="23" Click="SetWorkingFolderButton_Click" HorizontalAlignment="Right" Width="48"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,203,0,0" TextWrapping="Wrap" Text="Add Section" VerticalAlignment="Top" Width="74" Foreground="White"/>
+        <Button Name="RemoveSection" Content="Remove" Margin="0,200,287,0" VerticalAlignment="Top" Height="22" Click="RemoveSection_Click" HorizontalAlignment="Right" Width="75"/>
+        <Button x:Name="ButtonMoveUp" FontFamily="Segoe UI Symbol" Content="&#xE110;" Margin="0,200,405,0" VerticalAlignment="Top" Height="22" Click="ButtonMoveUp_Click" HorizontalAlignment="Right" Width="33"/>
+        <Button x:Name="ButtonMoveDown" FontFamily="Segoe UI Symbol" Content="&#xE1FD;" Margin="0,200,367,0" VerticalAlignment="Top" Height="22" Click="ButtonMoveDown_Click" HorizontalAlignment="Right" Width="33"/>
+        <TextBox x:Name="TileBGImage" Height="23" Margin="0,122,242,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="132"/>
+        <TextBlock Margin="0,101,242,0" TextWrapping="Wrap" Text="Tile Background Image" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Right" Width="132"/>
+        <Button x:Name="TileBGImageSetter" Content="Set" Margin="0,122,194,0" VerticalAlignment="Top" Height="23" Click="TileBGImageSetter_Click" HorizontalAlignment="Right" Width="48"/>
+        <TextBox x:Name="PageBGImage" Height="23" Margin="0,122,58,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="132"/>
+        <TextBlock Margin="0,101,58,0" TextWrapping="Wrap" Text="Page Background Image" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Right" Width="132"/>
+        <Button x:Name="PageBGImageSetter" Content="Set" Margin="0,122,10,0" VerticalAlignment="Top" Height="23" Click="PageBGImageSetter_Click" HorizontalAlignment="Right" Width="48"/>
+        <Image Name="TileBGImagePreview" HorizontalAlignment="Left" Height="44" Margin="283,146,0,0" VerticalAlignment="Top" Width="130" RenderTransformOrigin="0.5,0.5" Stretch="UniformToFill">
+        </Image>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Campaign Maker" VerticalAlignment="Top" Width="740" Foreground="White" Height="38" FontSize="24"/>
+        <Button x:Name="SaveButton" Content="Save" Margin="0,10,10,0" VerticalAlignment="Top" Height="38" HorizontalAlignment="Right" Width="86" Click="SaveButton_Click"/>
+
+        <Button x:Name="SetMissionsButton" Content="Missions" Margin="0,200,10,0" VerticalAlignment="Top" Height="22" HorizontalAlignment="Right" Width="272" Click="SetMissionsButton_Click"/>
+
+        <Grid Visibility="Collapsed" Name="MissionPopup" Background="#E5000000" >
+            <Grid Name="InternalPopup" Background="#FF535353" Margin="75,84,104,102">
+                <Grid>
+                    <DataGrid x:Name="MissionsGrid" SelectionMode="Single" AllowDrop="True" AutoGenerateColumns="True" HorizontalAlignment="Stretch" Margin="10,80,10,35" Width="auto" Height="auto" VerticalAlignment="Stretch" ItemsSource="{Binding TempCommandList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Loaded="GridLoaded" Background="#7FF0F0F0"/>
+                    <Label Content="Missions" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="65" Width="561" Foreground="White" FontSize="36"/>
+                    <Button Name="CloseMissions"  Content="Done" Margin="0,0,10,10" Click="CloseMissions_Click" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom"/>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid Visibility="Visible" Name="BlockerGrid" Background="#FF2B2B2B" Margin="0,97,0,0">
+            <TextBlock TextWrapping="WrapWithOverflow" Text="Start or load a new campaign by setting the Campaing folder. If you wish to create a new campaign, set it to an empty folder. If you wish to load a campaign, set to one of your existing campaing folders and it will load it automatically." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Foreground="White" Height="620" Width="740"/>
+        </Grid>
+    </Grid>
+</Window>
