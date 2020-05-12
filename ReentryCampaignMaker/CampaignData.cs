@@ -30,5 +30,6 @@ namespace Reentry.Campaign
         public string PageBackgroundImage { get; set; }
         public List<CampaignSection> Sections { get; set; } = new List<CampaignSection>();
         public List<CampaignMissionData> Missions { get; set; } = new List<CampaignMissionData>();
+        public string CompletionMessage { get; set; }
     }
 }

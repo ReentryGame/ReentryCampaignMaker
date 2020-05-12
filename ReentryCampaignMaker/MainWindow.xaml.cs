@@ -249,6 +249,10 @@ namespace ReentryCampaignMaker
             {
                 GenerateControllersFromDescriptorFile();
                 CampaignTitle.Text = campaignData.Title;
+
+                if (campaignData.CompletionMessage != null)
+                    CompletionMessage.Text = campaignData.CompletionMessage;
+
                 if(campaignData.PageBackgroundImage != null)
                 {
                     if(campaignData.PageBackgroundImage != "")
@@ -429,6 +433,7 @@ namespace ReentryCampaignMaker
                 Title = CampaignTitle.Text,
                 TileBackgroundImage = TileBGImage.Text,
                 PageBackgroundImage = PageBGImage.Text,
+                CompletionMessage = CompletionMessage.Text
             };
 
             campaignData.Sections = new List<CampaignSection>();

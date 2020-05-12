@@ -69,10 +69,12 @@
         <Grid Visibility="Collapsed" Name="MissionPopup" Background="#E5000000" >
             <Grid Name="InternalPopup" Background="#FF535353" Margin="75,84,104,102">
                 <Grid>
-                    <DataGrid x:Name="MissionsGrid" SelectionMode="Single" AllowDrop="True" AutoGenerateColumns="True" HorizontalAlignment="Stretch" Margin="10,80,10,35" Width="auto" Height="auto" VerticalAlignment="Stretch" ItemsSource="{Binding TempCommandList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Loaded="GridLoaded" Background="#7FF0F0F0"/>
+                    <DataGrid x:Name="MissionsGrid" SelectionMode="Single" AllowDrop="True" AutoGenerateColumns="True" HorizontalAlignment="Stretch" Margin="10,80,10,131" Width="auto" Height="auto" VerticalAlignment="Stretch" ItemsSource="{Binding TempCommandList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Loaded="GridLoaded" Background="#7FF0F0F0"/>
                     <Label Content="Missions" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="65" Width="561" Foreground="White" FontSize="36"/>
                     <Button Name="CloseMissions"  Content="Done" Margin="0,0,10,10" Click="CloseMissions_Click" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom"/>
                 </Grid>
+                <Label Content="Campaing Completed Message" HorizontalAlignment="Left" Margin="6,0,0,107" Height="26" VerticalAlignment="Bottom" Foreground="White"/>
+                <TextBox Name="CompletionMessage" Margin="10,0,10,38" TextWrapping="Wrap" AcceptsReturn="True" Text="Congratulations on completing the campaing!" Height="72" VerticalAlignment="Bottom"/>
             </Grid>
         </Grid>
 
